@@ -17,10 +17,10 @@ export class Cart extends Model {
 	UserId: number
 	
 	@Column
-	pizza:number
+	pizza:string
 	
 	@Column
-	topping: number
+	topping: string
 	
 	@Column
     totalCost: number

@@ -14,16 +14,17 @@ export class Pizza extends Model  {
 	name: string
 	
 	
-	@Column(DataType.NUMBER)
+	@Column
 	price: number
 	
 	@Column
 	description: string
 	
-	@Column(DataType.NUMBER)
+	@Column
 	quantity: number
 	
 	@Column
 	img: string
 
 }
+// (DataType.NUMBER)

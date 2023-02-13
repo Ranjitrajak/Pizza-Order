@@ -1,4 +1,5 @@
 export class ToppingDto {
-	name: string
+	label: string
+	value: string
 	additionalCost: number
 }

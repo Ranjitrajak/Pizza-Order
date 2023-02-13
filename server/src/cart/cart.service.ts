@@ -22,17 +22,18 @@ export class CartService {
     ) { }
 
     async createCart(cart: CartDto): Promise<Cart> {
-        const getpizza= await this.pizzaModel.findOne({where:{id:cart.pizza}})
-        let addPrice :number=0
-        addPrice +=getpizza.price
 
-        if(cart.topping){
-            const gettopping= await this.toppingModel.findOne({where:{id:cart.topping}})
-            addPrice+=gettopping.additionalCost
-        }
+        // const getpizza= await this.pizzaModel.findOne({where:{id:cart.pizza}})
+        // let addPrice :number=0
+        // addPrice +=getpizza.price
+
+        // if(cart.topping){
+        //     const gettopping= await this.toppingModel.findOne({where:{id:cart.topping}})
+        //     addPrice+=gettopping.additionalCost
+        // }
         
 
-        const newcart = await this.cartModel.create({ ...cart, totalCost:addPrice})
+        const newcart = await this.cartModel.create({ ...cart})
 
         return newcart
 
@@ -44,6 +45,11 @@ export class CartService {
             where: { UserId: id }
         })
     }
+    async deleteCartItemsById(id: number) {
+		return await this.cartModel.destroy({
+			where: { UserId: id }
+		})
+	}
 
 
 }

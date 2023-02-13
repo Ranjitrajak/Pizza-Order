@@ -1,5 +1,5 @@
 export class OrderDto{
 
 	UserId: number
-	totalPrice: string
+	Pizza_order: string
 }

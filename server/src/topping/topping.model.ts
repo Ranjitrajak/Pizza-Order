@@ -10,7 +10,9 @@ export class Topping extends Model {
 	id: number
 	
 	@Column
-	name: string
+	label: string
+	@Column
+	value: string
 
 	@Column
 	additionalCost:number

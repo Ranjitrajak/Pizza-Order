@@ -4,16 +4,42 @@ import "../styles/navbar.css"
 
 const Navbar = () => {
   return (
-    <div className='path'>
+    <>
+    
+      <nav className='navbar'>
+        <div className='nav-center'>
+         <NavLink to='/'><img src= "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/pizza-logo-design-template-bcc6f3266366747a9d5d0333532eca67_screen.jpg?ts=1649320635"alt='pizza logo' className='logo' /></NavLink>
+
+        <ul className='nav-links'>
+          <li>
+          <NavLink to="/order" style={{marginRight: '20px',color:'White'}}>Myorder</NavLink>
+          </li>
+          <li>
+          <NavLink to="/create" style={{marginRight: '100px',color:'White'}}>Login</NavLink>
+
+          </li>
+          <li>
+          <NavLink to="/cart" style={{marginRight: '10px',color:'White'}}>Mycart</NavLink>
+
+          </li>
+         </ul>
+
+        </div>
+      
+
+
+      </nav>
      
     
     
-    <NavLink to="/order" style={{marginRight: '20px'}}>Myorder</NavLink><br></br>
-    <NavLink to="/create" style={{marginRight: '100px'}}>signin</NavLink><br></br>
-    <NavLink to="/cart" style={{marginRight: '10px'}}>MyCart</NavLink><br></br>
+
+
+    
+    
    
  
-    </div>
+    
+    </>
   )
 }
 

@@ -19,7 +19,7 @@ export class User extends Model {
 	@Column
 	email: string
 	
-	@Column(DataType.NUMBER)
+	@Column
 	phoneNumber: number
 	
 	@Column
@@ -28,3 +28,4 @@ export class User extends Model {
 	
 	
 }
+// (DataType.NUMBER)

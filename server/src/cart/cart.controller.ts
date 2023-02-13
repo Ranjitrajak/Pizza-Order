@@ -1,4 +1,4 @@
-import { Controller, Get,Param, ParseIntPipe,Body,  HttpException, HttpStatus, Post, } from '@nestjs/common'
+import { Controller, Get,Param, ParseIntPipe,Body,  HttpException, HttpStatus, Post,Delete } from '@nestjs/common'
 import { CartService } from './cart.service'
 import { CartDto } from './cartdto'
 
@@ -24,6 +24,10 @@ export class CartController {
     @Get('/:id')
 	async getCartItemsById(@Param('id', ParseIntPipe) id: number) {
 		return await this.cartService.getCartById(id)
+	}
+	@Delete('/:id')
+	async deleteCartItems(@Param('id', ParseIntPipe) id: number) {
+		return await this.cartService.deleteCartItemsById(id)
 	}
 
 }

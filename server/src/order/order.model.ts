@@ -1,5 +1,5 @@
 
-import { AutoIncrement, Column, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { AutoIncrement, Column, ForeignKey, Model, PrimaryKey, Table, BeforeCreate, BeforeUpdate  } from "sequelize-typescript";
 import { User } from "src/user/user.model"
 
 
@@ -17,6 +17,6 @@ export class Order extends Model {
 
 
     @Column
-    totalPrice: string
+    Pizza_order: string
 
 }

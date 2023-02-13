@@ -1,28 +1,49 @@
-import { FC, useEffect } from "react"
+import { FC, useEffect ,useState} from "react"
 // import { AppBar, Toolbar, styled } from '@mui/material';
 import Navbar from "./Navbar";
+import axios from "axios"
 import '../styles/home.css'
+import { Row } from "antd"
+import { Pizza } from "../types/Pizza";
+import { Topping } from "../types/Tooping";
+import PizzaCard from "./PizzaCard";
 
 
  
 
 const Home : FC = (): JSX.Element =>{
+  const [ items, setItems ] = useState<Pizza[]>([])
+	const [ ingredients, setIngredients ] = useState<Topping[]>([])
+	
+	useEffect(() => {
+		async function getItems() {
+			const { data } = await axios.get('http://localhost:5000/pizza/all')
+			setItems(data)
+		}
+		async function getIngredients() {
+			const { data } = await axios.get('http://localhost:5000/Top/all')
+			setIngredients(data)
+		}
+		getItems()
+		getIngredients()
+	}, [])
   return (
     <>
-    <div className="Home">
-      <div>
-      <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/pizza-logo-design-template-bcc6f3266366747a9d5d0333532eca67_screen.jpg?ts=1649320635" height="100px" width='200px'
-       alt="logo"/> 
-
-      </div>
-      <div id="nav">
-      <Navbar/>   
-
-      </div>
+    <div className="Home" style={{paddingTop:'80px'}}>
+      
+      
+      <Row gutter={[5, 30]}>
+				{
+					items.map(item => {
+						return <PizzaCard item={item} key={item.id} ingredients={ingredients} />
+					})
+				}
+			</Row>
     
       
              
       </div>
+	  
     </>
   
   )
