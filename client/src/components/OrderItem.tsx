@@ -19,13 +19,13 @@ const OrderItem: FC<OrderItemProps> = ( { item } :OrderItemProps): JSX.Element =
 					`${ item.pizza } `
 				}
 			</div>
-			<div className="addons">
+			<div className="topping">
 				{
 					 `${ finalIngredients } `
 				}
 			</div>
 			<div className="itemPrice">
-				{ item.price } ₹
+			₹{ item.price } 
 			</div>
 
         </div>

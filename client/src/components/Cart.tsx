@@ -7,18 +7,29 @@ import CartItem from "./CartItem"
 
 
 import CartType from "../types/Cart"
+import { table } from "console"
 
 
 
 const Cart: FC = (): JSX.Element => {
 	const [ price, setPrice ] = useState(0)
 	const [ response, setResponse ] = useState<CartType[]>([])
+	const [ userId, setUserId ] = useState(0)
 	
 	
 	useEffect(() => {
 		async function getCartItems() {
+			const token = localStorage.getItem("accessToken")
+			const email = localStorage.getItem('userEmail')
+
+			const headerConfig = { headers: { Authorization: `Bearer ${ token }` } }
+			const { data } = await axios.get(`http://localhost:5000/user/${ email }`, headerConfig)
+			const userId = await data.userId
+			setUserId(userId)
+
+
 			
-			const getCart = await axios.get(`http://localhost:5000/cart/1`)
+			const getCart = await axios.get(`http://localhost:5000/cart/${ userId }`,headerConfig)
 			setResponse(getCart.data)
 			
 		}
@@ -48,15 +59,17 @@ const Cart: FC = (): JSX.Element => {
 			Pizza_order.push(obj)
 		})
 		const orderItem = {
-			"UserId": 1,
+			"UserId": userId ,
 			"Pizza_order": JSON.stringify( Pizza_order)
 		}
+		const token = localStorage.getItem('accessToken')
+		const headerConfig = { headers: { Authorization: `Bearer ${ token }` } }
 		
 		try {
 
-			await axios.post('http://localhost:5000/order/create', orderItem, )
+			await axios.post('http://localhost:5000/order/create', orderItem,headerConfig )
 
-			await axios.delete(`http://localhost:5000/cart/1`)
+			await axios.delete(`http://localhost:5000/cart/${ userId }`, headerConfig )
 		
 			
 		} catch (e) {
@@ -103,3 +116,4 @@ const Cart: FC = (): JSX.Element => {
 }
 
 export default Cart
+

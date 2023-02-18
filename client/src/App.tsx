@@ -1,33 +1,29 @@
-import React from 'react';
-
-
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Login from './components/Login';
+import Auth from './components/Auth';
 import Order from './components/Order';
 import Cart from './components/Cart';
 import Navbar from './components/Navbar';
-
-
+import UserContext from './UserContext'
 
 function App() {
-  return (
-    <div >
-      
-      <BrowserRouter>
-      <Navbar/>
+  const [loggedIn, setLoggedIn] = useState(false);
 
-      
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/create' element={<Login/>}/>
-        <Route path='/order' element={<Order/>}/>
-        <Route path='/cart' element={<Cart/>}/>
-      </Routes>
+  return (
+    <UserContext.Provider value={{ loggedIn, setLoggedIn } as any}>
+      <BrowserRouter>
+        <Navbar />
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/sign" element={<Auth />} />
+            <Route path="/order" element={<Order />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </div>
       </BrowserRouter>
-     
-    </div>
+    </UserContext.Provider>
   );
 }
 

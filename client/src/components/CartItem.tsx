@@ -24,7 +24,7 @@ const CartItem: FC<CartItemProps> = ( { item } : CartItemProps): JSX.Element => 
 				}
 			</div>
 			<div className="itemPrice">
-				{ item.totalCost } ₹
+			₹{ item.totalCost } 
 			</div>
 		</>
 	)

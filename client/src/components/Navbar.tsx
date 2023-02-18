@@ -8,14 +8,14 @@ const Navbar = () => {
     
       <nav className='navbar'>
         <div className='nav-center'>
-         <NavLink to='/'><img src= "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/pizza-logo-design-template-bcc6f3266366747a9d5d0333532eca67_screen.jpg?ts=1649320635"alt='pizza logo' className='logo' /></NavLink>
+         <NavLink to='/'>Pizza logo</NavLink>
 
         <ul className='nav-links'>
           <li>
           <NavLink to="/order" style={{marginRight: '20px',color:'White'}}>Myorder</NavLink>
           </li>
           <li>
-          <NavLink to="/create" style={{marginRight: '100px',color:'White'}}>Login</NavLink>
+          <NavLink to="/sign" style={{marginRight: '100px',color:'White'}}>Login</NavLink>
 
           </li>
           <li>

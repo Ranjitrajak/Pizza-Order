@@ -1,4 +1,4 @@
-import { Body, Controller, HttpException, HttpStatus, Post, Req, UseGuards,Get  } from '@nestjs/common'
+import { Body, Controller, HttpException, HttpStatus, Post, Req, UseGuards,Get ,Param } from '@nestjs/common'
 import { User } from './user.model'
 import { UserService } from './users.service'
 import { Request } from "express"
@@ -16,7 +16,7 @@ export class UserController {
 
 	constructor(private readonly userService: UserService) { }
 
-	@Post('/create')
+	@Post('/signup')
 	async createUser(@Body() user: UserDto) {
 
 		
@@ -37,6 +37,13 @@ export class UserController {
 	@Get('/mycart')
 	async getMyCart() {
 		return {msg: "My Cart"}
+	}
+
+	@UseGuards(JwtAuthGuard)
+	@Get('/:email')
+	async getUserByEmail(@Param('email') email: string) {
+		return  await this.userService.findByEmail(email)
+		
 	}
 
 }

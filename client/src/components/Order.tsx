@@ -17,11 +17,20 @@ interface OrderType {
 const Order: FC = (): JSX.Element => {
   const [orders, setOrders] = useState<OrderType[]>([])
   useEffect(() => {
+    
 
 
     async function getOrders() {
+      const token = localStorage.getItem("accessToken")
+			const email = localStorage.getItem('userEmail')
 
-      const { data } = await axios.get(`http://localhost:5000/order/1`)
+			const headerConfig = { headers: { Authorization: `Bearer ${ token }` } }
+			const res  = await axios.get(`http://localhost:5000/user/${ email }`, headerConfig)
+      console.log(res)
+			const userId = await res.data.userId
+      console.log(userId)
+
+      const { data } = await axios.get(`http://localhost:5000/order/${ userId }`, headerConfig)
       setOrders(data)
     }
 

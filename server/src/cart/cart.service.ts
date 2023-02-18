@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from "@nestjs/sequelize";
-import { get } from 'https';
-import { Pizza } from 'src/pizza/pizza.model';
-import { Topping } from 'src/topping/topping.model';
+
 import { Cart } from './cart.model';
 import { CartDto } from './cartdto';
+import { Pizza } from 'src/pizza/pizza.model';
+import { Topping } from 'src/topping/topping.model';
+import { get } from 'https';
 
 
 @Injectable()
@@ -17,20 +18,14 @@ export class CartService {
         private pizzaModel:typeof Pizza,
         @InjectModel(Topping)
         private toppingModel:typeof Topping,
+      
 
 
     ) { }
 
     async createCart(cart: CartDto): Promise<Cart> {
 
-        // const getpizza= await this.pizzaModel.findOne({where:{id:cart.pizza}})
-        // let addPrice :number=0
-        // addPrice +=getpizza.price
-
-        // if(cart.topping){
-        //     const gettopping= await this.toppingModel.findOne({where:{id:cart.topping}})
-        //     addPrice+=gettopping.additionalCost
-        // }
+        
         
 
         const newcart = await this.cartModel.create({ ...cart})

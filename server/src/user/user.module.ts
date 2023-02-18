@@ -25,7 +25,7 @@ export class UserModule implements NestModule {
 	configure(consumer: MiddlewareConsumer): any {
 		consumer.apply(HashPasswordMiddleware)
 			.forRoutes({
-				path: 'user/create',
+				path: 'user/signup',
 				method: RequestMethod.POST
 			})
       consumer.apply(AuthenticateMiddleware)
