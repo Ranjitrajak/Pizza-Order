@@ -54,6 +54,13 @@ const Auth = () => {
         
         
         .then(() => naviagte("/sign"));
+        setInputs({
+          fullName: "",
+          email: "",
+          password: "",
+          phoneNumber:"",
+          address :""
+         })
     } else {
       sendRequest()
         .then((data) => {localStorage.setItem("accessToken", data.access_token)
@@ -64,6 +71,7 @@ const Auth = () => {
 			           
         
        naviagte("/")
+      
         
     }
   };

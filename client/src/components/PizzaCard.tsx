@@ -118,7 +118,7 @@ const PizzaCard : FC<PizzaCardProps> = ({ item, ingredients }): JSX.Element => {
 								
 						</div>
 						
-						<Button onClick={addToCart}>Add to Cart</Button>
+						<Button style={{marginLeft:"10px"}} onClick={addToCart}>Add to Cart</Button>
 					</div>
 				
 				</Card>

@@ -7,8 +7,10 @@ const Navbar = () => {
     <>
     
       <nav className='navbar'>
+
+      <NavLink to='/'><img src='https://d1csarkz8obe9u.cloudfront.net/posterpreviews/pizza-logo-design-template-bcc6f3266366747a9d5d0333532eca67_screen.jpg?ts=1649320635' alt='logo' className='logo'/></NavLink>
         <div className='nav-center'>
-         <NavLink to='/'>Pizza logo</NavLink>
+       
 
         <ul className='nav-links'>
           <li>
